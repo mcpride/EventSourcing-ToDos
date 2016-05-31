@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A02F706B-F582-4B94-82DC-8A9C38092669}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{61B1A1F0-2196-4EF0-B2DE-0BCC9BFF6FAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{D8663854-502C-4012-A519-1A1083FA68DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDos.Domain", "ToDos.Domain\ToDos.Domain.csproj", "{D65A6522-181B-443D-804C-16D283841584}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{9E9EE48B-A98E-4ADA-A8B6-1A326DB55D37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F4A51031-E40A-4F47-9A0D-B1AC865CDC5C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.EventSourcing.Infrastructure", "Infrastructure\MS.EventSourcing.Infrastructure\MS.EventSourcing.Infrastructure.csproj", "{B5CD8FE0-A99E-47F0-9617-1076415D3000}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.EventSourcing.Infrastructure.MassTransit", "Infrastructure\MS.EventSourcing.Infrastructure.MassTransit\MS.EventSourcing.Infrastructure.MassTransit.csproj", "{E1118C44-9C52-4834-BBD6-BCF222719A5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.EventSourcing.Infrastructure.EF", "Infrastructure\MS.EventSourcing.Infrastructure.EF\MS.EventSourcing.Infrastructure.EF.csproj", "{10CAEFFC-B7DF-43E4-992D-B32975C8C618}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.EventSourcing.Infrastructure.EF.MySql", "Infrastructure\MS.EventSourcing.Infrastructure.EF.MySql\MS.EventSourcing.Infrastructure.EF.MySql.csproj", "{00EFEE7B-AF4F-474F-A5BF-6C056269CB26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D65A6522-181B-443D-804C-16D283841584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D65A6522-181B-443D-804C-16D283841584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D65A6522-181B-443D-804C-16D283841584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D65A6522-181B-443D-804C-16D283841584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CD8FE0-A99E-47F0-9617-1076415D3000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5CD8FE0-A99E-47F0-9617-1076415D3000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5CD8FE0-A99E-47F0-9617-1076415D3000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5CD8FE0-A99E-47F0-9617-1076415D3000}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1118C44-9C52-4834-BBD6-BCF222719A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1118C44-9C52-4834-BBD6-BCF222719A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1118C44-9C52-4834-BBD6-BCF222719A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1118C44-9C52-4834-BBD6-BCF222719A5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10CAEFFC-B7DF-43E4-992D-B32975C8C618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10CAEFFC-B7DF-43E4-992D-B32975C8C618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10CAEFFC-B7DF-43E4-992D-B32975C8C618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10CAEFFC-B7DF-43E4-992D-B32975C8C618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00EFEE7B-AF4F-474F-A5BF-6C056269CB26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00EFEE7B-AF4F-474F-A5BF-6C056269CB26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00EFEE7B-AF4F-474F-A5BF-6C056269CB26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00EFEE7B-AF4F-474F-A5BF-6C056269CB26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D65A6522-181B-443D-804C-16D283841584} = {61B1A1F0-2196-4EF0-B2DE-0BCC9BFF6FAE}
+		{B5CD8FE0-A99E-47F0-9617-1076415D3000} = {A02F706B-F582-4B94-82DC-8A9C38092669}
+		{E1118C44-9C52-4834-BBD6-BCF222719A5F} = {A02F706B-F582-4B94-82DC-8A9C38092669}
+		{10CAEFFC-B7DF-43E4-992D-B32975C8C618} = {A02F706B-F582-4B94-82DC-8A9C38092669}
+		{00EFEE7B-AF4F-474F-A5BF-6C056269CB26} = {A02F706B-F582-4B94-82DC-8A9C38092669}
+	EndGlobalSection
+EndGlobal
