@@ -73,7 +73,6 @@
   <ItemGroup>
     <Compile Include="Domain\IToDosContext.cs" />
     <Compile Include="Domain\ToDosContext.cs" />
-    <Compile Include="EventHandling\IToDosEventHandler.cs" />
     <Compile Include="EventHandling\ToDosEventBus.cs" />
     <Compile Include="IoC\Bootstrapper.cs" />
     <Compile Include="IoC\MefBootstrapper.cs" />
@@ -103,9 +102,17 @@
       <Project>{b5cd8fe0-a99e-47f0-9617-1076415d3000}</Project>
       <Name>MS.EventSourcing.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ToDos.Commands\ToDos.Commands.csproj">
+      <Project>{0acd2b18-3a9f-4ae9-863e-97e89e78f3e8}</Project>
+      <Name>ToDos.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToDos.Domain\ToDos.Domain.csproj">
       <Project>{d65a6522-181b-443d-804c-16d283841584}</Project>
       <Name>ToDos.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToDos.Events\ToDos.Events.csproj">
+      <Project>{ba6135ca-7c20-4f16-9349-8d189387b820}</Project>
+      <Name>ToDos.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -8,9 +8,9 @@ namespace ToDos.Infrastructure
         private readonly Func<IToDosContext> _toDosContextFactory;
         private IToDosContext _toDosContext;
 
-        public ToDosService(Func<IToDosContext> toDosContextFactory)
+        public ToDosService(Tuple<Func<IToDosContext>> toDosContextFactory)
         {
-            _toDosContextFactory = toDosContextFactory;
+            _toDosContextFactory = toDosContextFactory.Item1;
         }
 
         public void Start()

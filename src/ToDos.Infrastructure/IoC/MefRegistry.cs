@@ -1,13 +1,12 @@
-﻿using System;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.ComponentModel.Composition.Registration;
 using MassTransit;
-using MassTransit.SubscriptionConfigurators;
 using MS.EventSourcing.Infrastructure.Domain;
 using MS.EventSourcing.Infrastructure.EF;
 using MS.EventSourcing.Infrastructure.EventHandling;
+using ToDos.Domain.EventHandling;
 using ToDos.Infrastructure.Domain;
 using ToDos.Infrastructure.EventHandling;
 using Bus = MS.EventSourcing.Infrastructure.MassTransit.Bus;
@@ -28,7 +27,7 @@ namespace ToDos.Infrastructure.IoC
         public static ComposablePartCatalog GetCatalog(this RegistrationBuilder registration)
         {
             return new AggregateCatalog(
-                new AssemblyCatalog(typeof(ToDosContext).Assembly),
+                new AssemblyCatalog(typeof(IToDosEventHandler).Assembly, registration),
                 new AssemblyCatalog(typeof(ToDosContext).Assembly, registration),
                 new AssemblyCatalog(typeof(DomainEvent).Assembly, registration),
                 new AssemblyCatalog(typeof(Bus).Assembly, registration),
@@ -88,12 +87,6 @@ namespace ToDos.Infrastructure.IoC
                 .ExportInterfaces();
 
             registration.ForType<ToDosContext>()
-                //.SelectConstructor(
-                //    builder => new ToDosContext(
-                //        builder.Import<IToDosEventBus>(), 
-                //        builder.Import<IEventStore>(), 
-                //        builder.Import<ISnapshotStore>(), 
-                //        builder.Import<IDomainRepository>()))
                 .SetCreationPolicy(CreationPolicy.Shared)
                 .Export()
                 .ExportInterfaces();

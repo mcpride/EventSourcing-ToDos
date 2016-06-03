@@ -2,6 +2,7 @@
 using MassTransit.SubscriptionConfigurators;
 using MS.EventSourcing.Infrastructure.Domain;
 using MS.EventSourcing.Infrastructure.EventHandling;
+using ToDos.Events;
 using ToDos.Infrastructure.EventHandling;
 
 namespace ToDos.Infrastructure.Domain
@@ -19,6 +20,7 @@ namespace ToDos.Infrastructure.Domain
         public void Initialize(Action<SubscriptionBusServiceConfigurator> subscribeEventHandlers)
         {
             _eventBus.Initialize(subscribeEventHandlers, sbc => sbc.ReceiveFrom(new Uri("loopback://localhost/todos_events")));
+            _eventBus.PublishEvent(new ToDosContextInitialized());
         }
 
 

@@ -74,6 +74,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventHandling\IToDosEventHandler.cs" />
+    <Compile Include="EventHandling\ToDosEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +85,16 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\MS.EventSourcing.Infrastructure\MS.EventSourcing.Infrastructure.csproj">
+      <Project>{B5CD8FE0-A99E-47F0-9617-1076415D3000}</Project>
+      <Name>MS.EventSourcing.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToDos.Events\ToDos.Events.csproj">
+      <Project>{ba6135ca-7c20-4f16-9349-8d189387b820}</Project>
+      <Name>ToDos.Events</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
