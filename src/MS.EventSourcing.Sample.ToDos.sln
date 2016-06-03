@@ -28,6 +28,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.EventSourcing.Infrastruc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.EventSourcing.Infrastructure.EF.MySql", "Infrastructure\MS.EventSourcing.Infrastructure.EF.MySql\MS.EventSourcing.Infrastructure.EF.MySql.csproj", "{00EFEE7B-AF4F-474F-A5BF-6C056269CB26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDos.Infrastructure", "ToDos.Infrastructure\ToDos.Infrastructure.csproj", "{1AB08F9F-F5D9-4ED8-B297-5D203977B95F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{02FB95C6-72F3-457D-89CC-B57496FF2673}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDos.ServiceHost", "ToDos.ServiceHost\ToDos.ServiceHost.csproj", "{0BA6D3D9-EA78-4EB8-B35C-61E63203F276}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +60,14 @@ Global
 		{00EFEE7B-AF4F-474F-A5BF-6C056269CB26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00EFEE7B-AF4F-474F-A5BF-6C056269CB26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00EFEE7B-AF4F-474F-A5BF-6C056269CB26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AB08F9F-F5D9-4ED8-B297-5D203977B95F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AB08F9F-F5D9-4ED8-B297-5D203977B95F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AB08F9F-F5D9-4ED8-B297-5D203977B95F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AB08F9F-F5D9-4ED8-B297-5D203977B95F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BA6D3D9-EA78-4EB8-B35C-61E63203F276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BA6D3D9-EA78-4EB8-B35C-61E63203F276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BA6D3D9-EA78-4EB8-B35C-61E63203F276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BA6D3D9-EA78-4EB8-B35C-61E63203F276}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +78,7 @@ Global
 		{E1118C44-9C52-4834-BBD6-BCF222719A5F} = {A02F706B-F582-4B94-82DC-8A9C38092669}
 		{10CAEFFC-B7DF-43E4-992D-B32975C8C618} = {A02F706B-F582-4B94-82DC-8A9C38092669}
 		{00EFEE7B-AF4F-474F-A5BF-6C056269CB26} = {A02F706B-F582-4B94-82DC-8A9C38092669}
+		{1AB08F9F-F5D9-4ED8-B297-5D203977B95F} = {A02F706B-F582-4B94-82DC-8A9C38092669}
+		{0BA6D3D9-EA78-4EB8-B35C-61E63203F276} = {02FB95C6-72F3-457D-89CC-B57496FF2673}
 	EndGlobalSection
 EndGlobal

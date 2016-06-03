@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ToDos.Domain")]
+[assembly: AssemblyTitle("ToDos.ServiceHost")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("mcpride")]
-[assembly: AssemblyProduct("ToDos.Domain")]
-[assembly: AssemblyCopyright("Copyright © mcpride 2016")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("ToDos.ServiceHost")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a5c12e98-ca35-4418-91cb-31de65f9006d")]
+[assembly: Guid("a57a9e07-61d9-41e5-bfd8-59135bae9862")]
 
 // Version information for an assembly consists of the following four values:
 //
