@@ -4,7 +4,9 @@ using ToDos.Events;
 
 namespace ToDos.Domain.EventHandling
 {
-    public class ToDosEventHandler : Consumes<ToDosContextInitialized>.All, IToDosEventHandler
+    public class ToDosEventHandler : 
+        Consumes<ToDosContextInitialized>.All, 
+        IToDosEventHandler
     {
         public void Consume(ToDosContextInitialized message)
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using ToDos.Domain;
 using ToDos.Infrastructure.Domain;
 
 namespace ToDos.Infrastructure
@@ -8,7 +9,7 @@ namespace ToDos.Infrastructure
         private readonly Func<IToDosContext> _toDosContextFactory;
         private IToDosContext _toDosContext;
 
-        public ToDosService(Tuple<Func<IToDosContext>> toDosContextFactory)
+        public ToDosService(Tuple<Func<IToDosContext>> toDosContextFactory) // See DI tuple envelope workaround in MefBootstrapper.BatchConfig()
         {
             _toDosContextFactory = toDosContextFactory.Item1;
         }

@@ -1,26 +1,51 @@
 ﻿using System;
+using System.Linq;
 using MassTransit.SubscriptionConfigurators;
 using MS.EventSourcing.Infrastructure.Domain;
 using MS.EventSourcing.Infrastructure.EventHandling;
-using ToDos.Events;
+using ToDos.Commands;
+using ToDos.Domain;
+using ToDos.Infrastructure.Domain.CommandHandling;
 using ToDos.Infrastructure.EventHandling;
 
 namespace ToDos.Infrastructure.Domain
 {
     public class ToDosContext : DomainContext, IToDosContext
     {
+        private readonly Lazy<IToDosCommandBus> _commandBus;
         private IToDosEventBus _eventBus;
+        private bool _initialized;
 
-        public ToDosContext(IToDosEventBus eventBus, IEventStore eventStore, ISnapshotStore snapshotStore, IDomainRepository domainRepository) 
+        public ToDosContext(Lazy<IToDosCommandBus> commandBus, IToDosEventBus eventBus, IEventStore eventStore, ISnapshotStore snapshotStore, IDomainRepository domainRepository) 
             : base(eventBus, eventStore, snapshotStore, domainRepository)
         {
+            _commandBus = commandBus;
             _eventBus = eventBus;
         }
 
-        public void Initialize(Action<SubscriptionBusServiceConfigurator> subscribeEventHandlers)
+        //Just for in-memory test initialization:
+        public void InitializeLoopback(Action<SubscriptionBusServiceConfigurator> subscribeAllHandlers)
         {
-            _eventBus.Initialize(subscribeEventHandlers, sbc => sbc.ReceiveFrom(new Uri("loopback://localhost/todos_events")));
-            _eventBus.PublishEvent(new ToDosContextInitialized());
+            if (_initialized) return;
+            _eventBus.Initialize(subscribeAllHandlers, sbc => sbc.ReceiveFrom(new Uri("loopback://localhost/todos_events")));
+            _commandBus.Value.InitializeWithServiceBus(_eventBus.ServiceBus);
+            _commandBus.Value.Send(new NotifyToDosContextInitialization(), result =>
+            {
+                if (!result.Success && result.Errors.Any())
+                {
+                    Console.Error.WriteLine(result.Errors.First());
+                }
+            }, TimeSpan.FromSeconds(30));
+            _initialized = true;
+        }
+
+        public void Initialize(Action<SubscriptionBusServiceConfigurator> subscribeCommandHandlers, Action<SubscriptionBusServiceConfigurator> subscribeEventHandlers)
+        {
+            if (_initialized) return;
+
+            throw new NotImplementedException();
+
+            //_initialized = true;
         }
 
 

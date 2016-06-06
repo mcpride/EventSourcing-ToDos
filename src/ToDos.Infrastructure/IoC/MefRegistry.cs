@@ -6,8 +6,10 @@ using MassTransit;
 using MS.EventSourcing.Infrastructure.Domain;
 using MS.EventSourcing.Infrastructure.EF;
 using MS.EventSourcing.Infrastructure.EventHandling;
+using ToDos.Domain.CommandHandling;
 using ToDos.Domain.EventHandling;
 using ToDos.Infrastructure.Domain;
+using ToDos.Infrastructure.Domain.CommandHandling;
 using ToDos.Infrastructure.EventHandling;
 using Bus = MS.EventSourcing.Infrastructure.MassTransit.Bus;
 
@@ -81,6 +83,11 @@ namespace ToDos.Infrastructure.IoC
 
         private static void RegisterToDosContext(RegistrationBuilder registration)
         {
+            registration.ForType<ToDosCommandBus>()
+                .SetCreationPolicy(CreationPolicy.Shared)
+                .Export()
+                .ExportInterfaces();
+
             registration.ForType<ToDosEventBus>()
                 .SetCreationPolicy(CreationPolicy.Shared)
                 .Export()
@@ -90,6 +97,11 @@ namespace ToDos.Infrastructure.IoC
                 .SetCreationPolicy(CreationPolicy.Shared)
                 .Export()
                 .ExportInterfaces();
+
+            registration.ForTypesDerivedFrom<IToDosCommandHandler>()
+                .SetCreationPolicy(CreationPolicy.NonShared)
+                .Export<IConsumer>(builder => builder
+                    .AddMetadata("ContractType", type => type));
 
             registration.ForTypesDerivedFrom<IToDosEventHandler>()
                 .SetCreationPolicy(CreationPolicy.NonShared)

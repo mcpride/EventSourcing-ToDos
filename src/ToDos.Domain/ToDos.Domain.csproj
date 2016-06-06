@@ -74,8 +74,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aggregates\ToDoList.Apply.cs">
+      <DependentUpon>ToDoList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Aggregates\ToDoList.cs" />
+    <Compile Include="CommandHandling\IToDosCommandHandler.cs" />
+    <Compile Include="CommandHandling\ToDosCommandHandler.cs" />
+    <Compile Include="Entities\ToDoItem.cs" />
     <Compile Include="EventHandling\IToDosEventHandler.cs" />
     <Compile Include="EventHandling\ToDosEventHandler.cs" />
+    <Compile Include="IToDosContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,10 +99,17 @@
       <Project>{B5CD8FE0-A99E-47F0-9617-1076415D3000}</Project>
       <Name>MS.EventSourcing.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ToDos.Commands\ToDos.Commands.csproj">
+      <Project>{0acd2b18-3a9f-4ae9-863e-97e89e78f3e8}</Project>
+      <Name>ToDos.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToDos.Events\ToDos.Events.csproj">
       <Project>{ba6135ca-7c20-4f16-9349-8d189387b820}</Project>
       <Name>ToDos.Events</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

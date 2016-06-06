@@ -2,7 +2,7 @@
 
 namespace ToDos.Events
 {
-    public class ToDosContextInitialized : DomainEvent
+    public class ToDosContextInitialized : DomainEvent, IExternalEvent
     {
     }
 }

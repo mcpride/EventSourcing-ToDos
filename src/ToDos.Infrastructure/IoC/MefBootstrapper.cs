@@ -6,8 +6,9 @@ using System.Reflection;
 using Magnum.Extensions;
 using MassTransit.Integration.Composition;
 using Microsoft.Practices.ServiceLocation;
+using ToDos.Domain;
+using ToDos.Domain.CommandHandling;
 using ToDos.Domain.EventHandling;
-using ToDos.Infrastructure.Domain;
 
 namespace ToDos.Infrastructure.IoC
 {
@@ -50,7 +51,8 @@ namespace ToDos.Infrastructure.IoC
             Func<IToDosContext> toDosContextFunc = () =>
             {
                 var context = GetExportedValue<IToDosContext>();
-                context.Initialize(sbc => sbc.LoadFrom(container, type => type.Implements<IToDosEventHandler>())); // register specific event handlers for ToDos context to MassTransit 
+                context.InitializeLoopback(sbc => sbc.LoadFrom(container, type => (type.Implements<IToDosCommandHandler>() || type.Implements<IToDosEventHandler>()))); // register specific handlers for ToDos context to MassTransit 
+                //context.Initialize(sbc => sbc.LoadFrom(container, type => type.Implements<IToDosCommandHandler>()), sbc => sbc.LoadFrom(container, type => type.Implements<IToDosEventHandler>())); // register specific command and event handlers for ToDos context to MassTransit 
                 return context;
             };
             batch.AddExportedValue(new Tuple<Func<IToDosContext>>(toDosContextFunc)); //Tuple envelope is a stupid workaround

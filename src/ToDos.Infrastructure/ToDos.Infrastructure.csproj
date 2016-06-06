@@ -71,7 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\IToDosContext.cs" />
+    <Compile Include="Domain\CommandHandling\ToDosCommandBus.cs" />
     <Compile Include="Domain\ToDosContext.cs" />
     <Compile Include="EventHandling\ToDosEventBus.cs" />
     <Compile Include="IoC\Bootstrapper.cs" />
