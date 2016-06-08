@@ -1,28 +1,17 @@
-﻿using System.Web.Http;
-using System.Web.Http.Dispatcher;
+﻿using System.ComponentModel.Composition.Hosting;
+using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
-using ToDos.Web.Injection.Installers;
-using ToDos.Web.Injection.WebAPI;
+using ToDos.Web.App_Start;
 
 namespace ToDos.Web
 {
-    // For Castle.Windsor WebApi Injection resolver
-    // thanks to: http://blog.ploeh.dk/2012/10/03/DependencyInjectioninASP.NETWebAPIwithCastleWindsor/
-
     public class WebApiApplication : System.Web.HttpApplication
     {
-        private readonly IWindsorContainer container;
-
-        public WebApiApplication()
-        {
-            this.container = new WindsorContainer();
-            container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
-        }
-
         public override void Dispose()
         {
-            this.container.Dispose();
+            HostingEnvironment.DIContainer = null;
             base.Dispose();
         }
 
@@ -35,24 +24,11 @@ namespace ToDos.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            var container = MefConfig.Configure(GlobalConfiguration.Configuration);
             // Configure all AutoMapper Profiles
             AutoMapperConfig.Configure();
             // Install DI mapper
 
-
-            this.container.Install(
-                        new MappersInstaller(),
-                        new CommandStackInstaller(),
-                        new QueryStackInstaller(),
-                        new QueryStackPollingClientInstaller(),
-                        new EventStoreInstaller(),
-                        new ControllersInstaller(),
-                        new LegacyMigrationInstaller()
-                        );
-
-            GlobalConfiguration.Configuration.Services.Replace(
-                typeof(IHttpControllerActivator),
-                new WindsorCompositionRoot(this.container));
 
             // Use of static reference to Di container to pass to SignalR or other Owin Module (e.g. Hangfire).
             // I don't like this approach because it forces to expose the DI container as public throughout all 
@@ -61,7 +37,7 @@ namespace ToDos.Web
             HostingEnvironment.DIContainer = container;
 
             //Create Event Store
-            container.Resolve<IStoreEvents>();
+            //container.Resolve<IStoreEvents>();
         }
 
     }
@@ -69,6 +45,6 @@ namespace ToDos.Web
     internal static class HostingEnvironment
     {
         public static string Name { get; set; }
-        public static IWindsorContainer DIContainer { get; set; }
+        public static CompositionContainer DIContainer { get; set; }
     }
 }

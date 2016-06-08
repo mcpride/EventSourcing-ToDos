@@ -1,8 +1,9 @@
-﻿using ToDos.Web;
-using ToDos.Web.Injection.Hangfire;
+﻿using Hangfire;
+using Microsoft.Owin;
+using Owin;
+using ToDos.Web;
 
 [assembly: OwinStartup(typeof(Startup))]
-
 namespace ToDos.Web
 {
     public class Startup
@@ -22,13 +23,13 @@ namespace ToDos.Web
             //});
 
             //Hangfire configuration
-            GlobalConfiguration.Configuration.UseSqlServerStorage("ToDoContext");
-            app.UseHangfireDashboard();
-            app.UseHangfireServer();
+            //GlobalConfiguration.Configuration.UseSqlServerStorage("ToDoContext");
+            //app.UseHangfireDashboard();
+            //app.UseHangfireServer();
 
             //Fire & forget job
-            JobActivator.Current = new WindsorJobActivator(HostingEnvironment.DIContainer.Kernel);
-            BackgroundJob.Enqueue(() => HostingEnvironment.DIContainer.Resolve<CommitObserverStarter>().Start());
+            //JobActivator.Current = new WindsorJobActivator(HostingEnvironment.DIContainer.Kernel);
+            //BackgroundJob.Enqueue(() => HostingEnvironment.DIContainer.Resolve<CommitObserverStarter>().Start());
         }
     }
 

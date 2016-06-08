@@ -32,9 +32,7 @@ namespace ToDos.Web.IoC
 
         private static void RegisterMappers(RegistrationBuilder registration)
         {
-            //container.Register(Component.For<IMappingEngine>().UsingFactoryMethod(() => Mapper.Engine)); //Castle.Windsor
-            registration.ForType<IMappingEngine>().SelectConstructor(infos => Mapper.Engine).Export().ExportInterfaces();
-            //registration.ForType(typeof(Mapper)).ExportProperties<IMappingEngine>(info => info.Name == "Engine");
+            registration.ForType(typeof(Mapper)).ExportProperties<IMappingEngine>(info => info.Name == "Engine");
         }
 
         private static void RegisterControllers(RegistrationBuilder registration)
@@ -44,7 +42,6 @@ namespace ToDos.Web.IoC
 
             registration.ForType<ToDoWorker>()
                 .SetCreationPolicy(CreationPolicy.NonShared).Export();
- 
         }
     }
 }

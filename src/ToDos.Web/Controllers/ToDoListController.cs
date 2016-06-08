@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using System.Threading.Tasks;
 using System.Web.Http;
 using ToDos.Web.Models;
 using ToDos.Web.Worker;
@@ -22,12 +20,12 @@ namespace ToDos.Web.Controllers
         /// TODO -LISTS
         ///////////////////////
         #region TodoList Actions
-        [Route("api/TodoList/List")]
-        [HttpGet]
-        public Task<List<ToDoList>> List()
-        {
-            return Worker.GetLists();
-        }
+        //[Route("api/TodoList/List")]
+        //[HttpGet]
+        //public Task<List<ToDoList>> List()
+        //{
+        //    return Worker.GetLists();
+        //}
 
         [Route("api/TodoList/ChangeDescription")]
         [HttpPost]
@@ -85,20 +83,20 @@ namespace ToDos.Web.Controllers
         /// TODO -ITEMS
         ///////////////////////
         #region ToDoItems Actions
-        [Route("api/TodoList/Items/{Id}")]
-        [HttpGet]
-        public Task<ToDoList> Items(string Id)
-        {
-            return Worker.GetListItems(Id);
-        }
+        //[Route("api/TodoList/Items/{Id}")]
+        //[HttpGet]
+        //public Task<ToDoList> Items(string Id)
+        //{
+        //    return Worker.GetListItems(Id);
+        //}
 
-        //http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#route-names
-        [Route("api/TodoItems/{Id}", Name = "GetTodoItemById")]
-        [HttpGet]
-        public Task<ToDoItem> GetTodoItem(string Id)
-        {
-            return Worker.GetToDoItem(Id);
-        }
+        ////http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#route-names
+        //[Route("api/TodoItems/{Id}", Name = "GetTodoItemById")]
+        //[HttpGet]
+        //public Task<ToDoItem> GetTodoItem(string Id)
+        //{
+        //    return Worker.GetToDoItem(Id);
+        //}
 
         [Route("api/TodoList/Items/{Id}/Add")]
         [HttpPost]

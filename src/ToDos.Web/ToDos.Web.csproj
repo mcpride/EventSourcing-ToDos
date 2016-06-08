@@ -231,18 +231,12 @@
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\MefConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\MigrationController.cs" />
     <Compile Include="Controllers\ToDoListController.cs" />
-    <Compile Include="Injection\Hangfire\WindsorJobActivator.cs" />
-    <Compile Include="Injection\Installers\EventStoreInstaller.cs" />
-    <Compile Include="Injection\Installers\CommandStackInstaller.cs" />
-    <Compile Include="Injection\Installers\LegacyMigrationInstaller.cs" />
-    <Compile Include="Injection\Installers\MefRegistry.cs" />
-    <Compile Include="Injection\Installers\QueryStackInstaller.cs" />
-    <Compile Include="Injection\Installers\QueryStackPollingClientInstaller.cs" />
-    <Compile Include="Injection\WebAPI\WindsorCompositionRoot.cs" />
+    <Compile Include="IoC\MefDependencyResolver.cs" />
+    <Compile Include="IoC\MefRegistry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -697,6 +691,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

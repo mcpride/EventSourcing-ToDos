@@ -13,11 +13,11 @@ namespace ToDos.Web
 
         private static void GetConfiguration(IConfiguration configuration)
         {
-            var profiles = typeof(NotifiedToDoItem).Assembly.GetTypes().Where(x => typeof(Profile).IsAssignableFrom(x));
-            foreach (var profile in profiles)
-            {
-                configuration.AddProfile(Activator.CreateInstance(profile) as Profile);
-            }
+            //var profiles = typeof(NotifiedToDoItem).Assembly.GetTypes().Where(x => typeof(Profile).IsAssignableFrom(x));
+            //foreach (var profile in profiles)
+            //{
+            //    configuration.AddProfile(Activator.CreateInstance(profile) as Profile);
+            //}
         }
     }
 }
